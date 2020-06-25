@@ -15,6 +15,7 @@ env:
 r_packages:
   - covr
   - devtools
+  - Distance
 
 r:
   - release #build and test for stable release version only, devel can also be optionally used. 
