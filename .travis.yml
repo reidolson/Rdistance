@@ -11,12 +11,6 @@ env:
     - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings" #don't build the vignettes or manual
     - _R_CHECK_TIMINGS_="0" #Allows for timing information for the examples of all functions
     - CODECOV_TOKEN="<your_token_here>" #test token to ensure this service actually works
-    
-r_packages:
-  - covr
-  - devtools
-  - Distance
-
 r:
   - release #build and test for stable release version only, devel can also be optionally used. 
 
@@ -31,6 +25,7 @@ install:
   - R -e 'install.packages("stats")'
   - R -e 'install.packages("utils")'
   - R -e 'install.packages("covr")' #specifically for codecovr feature
+  - R -e 'install.packages("Distance")'
   
 
   
