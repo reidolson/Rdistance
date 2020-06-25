@@ -26,7 +26,9 @@ install:
   - R -e 'install.packages("stats")'
   - R -e 'install.packages("utils")'
   - R -e 'install.packages("covr")' #specifically for codecovr feature
+  
 
+  
 #Avoid building vignettes, they take too much time and will often time out the Travis CI  
 script:
   - R CMD build --no-build-vignettes --no-manual .
@@ -36,8 +38,11 @@ script:
 after_success:
   - test $TRAVIS_R_VERSION_STRING = 'release' && Rscript -e 'covr::codecov()'
   - Rscript -e 'devtools::install();devtools::test()'
-  - bash <(curl -s https://codecov.io/bash)
-
+  - Rscript -e 'library(covr); codecov()'
+  
+r_packages:
+  - covr
+  
 notifications:
   email:
     on_success: change
